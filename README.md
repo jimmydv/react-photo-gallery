@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-It was created as part of the TeamTreehouse Fullstack Techdegree program. 
+
+This project was created as part of the TeamTreehouse Fullstack Techdegree program. 
+ The imaged are loaded using The Flickr Api
+ APi key needed for project to work. 
+  Have fun!
+
 ## Available Scripts
 
 In the project directory, you can run:
