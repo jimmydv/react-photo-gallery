@@ -1,26 +1,28 @@
 import React from 'react';
+import {
+    withRouter,
 
+    } from 'react-router-dom'
 class SearchForm  extends React.Component{
-    creatSearchUrl =() =>{
-        
-    }
+
     // The following Function change tag value if the search field isn't empty 
     onSearchChange = e => {
-                if(e.target.value !== "") {
-                     this.props.tagValueHandler(e.target.value)
-                     
+                const searchValue = e.target.value;
+                if(searchValue !== "") {
+                     this.props.tagValueHandler(searchValue)
+                 
+                     this.props.history.push("/search"); // change url on search
                 } else{
                     this.props.tagValueHandler("wild")
+                    this.props.history.push("/"); //set url back to default
                 }
                 
     }
 
-    handleSearch = e => {
-        e.preventDefault();
 
-    }
 
     render() {
+        
     return(
         <form className="search-form" onSubmit={this.handleSearch}>
                 <input type="search" name="search" placeholder="Search" required  onChange ={this.onSearchChange}/>
@@ -34,4 +36,5 @@ class SearchForm  extends React.Component{
     )
     }
 }
-export default  SearchForm;
+
+export default withRouter( SearchForm);

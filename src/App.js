@@ -42,15 +42,17 @@ handleTagValue=(imagetag) =>{
 
 // return data if there was change , like when searching for new images
 componentDidUpdate(){
+  
   axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${this.state.tagName}&per_page=24&format=json&nojsoncallback=1`)
     .then(response => {
+      
       this.setState({
         images: response.data.photos.photo
       });
     })
-    .catch(function (error) {
-      console.log('Error Fetching and Parsing api data', error);
-    });
+    // .catch(function (error) {
+    //   console.log('Error Fetching and Parsing api data', error);
+    // });
 }
 
 
@@ -60,11 +62,11 @@ componentDidUpdate(){
     return(
       <Router>
         <div className="container">
-          <Route path="/" render={()=> <SearchFrom tagValueHandler={this.handleTagValue} />} />
+          <Route path="/" render={()=> <SearchFrom data={this.state.images} tagValueHandler={this.handleTagValue} />} />
           
           <Nav tagValueHandler={this.handleTagValue} />
           <Switch>
-            <Route path="/(|wild|sunrise|waterfall)" exact render={ () => <Gallery data={this.state.images} />}/> 
+            <Route path="/(|wild|sunrise|waterfall|search)" exact render={ () => <Gallery data={this.state.images} />}/> 
             <Route component={Notfound} /> {/* Display error page when a URL path does not match an existing route. */}
           </Switch>
         </div>

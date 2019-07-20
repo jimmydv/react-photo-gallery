@@ -5,6 +5,14 @@ This project was created as part of the TeamTreehouse Fullstack Techdegree progr
  APi key needed for project to work. 
   Have fun!
 
+
+#How to use the app.
+after downloading the main app file.
+open the terminal on your code editor and run {npm install} to install all the dependencies. 
+Once done create a Config.js file inside the src folder 
+The folder should contain a variable apiKey that should be equal to your Flicker API key. 
+
+
 ## Available Scripts
 
 In the project directory, you can run:
