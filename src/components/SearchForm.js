@@ -1,3 +1,4 @@
+// this page handle the search portion of the app.
 import React from 'react';
 import {
     withRouter,

@@ -5,7 +5,7 @@ import {
   Switch
 } from 'react-router-dom';
 import './App.css';
-import SearchFrom from './components/Search';
+import SearchFrom from './components/SearchForm';
 import Nav from './components/Nav';
 import apiKey from './Config';
 import axios from 'axios';
@@ -50,9 +50,9 @@ componentDidUpdate(){
         images: response.data.photos.photo
       });
     })
-    // .catch(function (error) {
-    //   console.log('Error Fetching and Parsing api data', error);
-    // });
+    .catch(function (error) {
+      console.log('Error Fetching and Parsing api data', error);
+    });
 }
 
 
