@@ -23,7 +23,12 @@ class App extends React.Component{
 
 handleTagValue=(imagetag) =>{
   const tagName = imagetag
-  this.setState({tagName:tagName})
+  this.setState( prevstate =>
+    {
+      if(prevstate!==imagetag){
+        return {tagName:tagName}
+      }
+  });
   }
 
 
@@ -46,7 +51,7 @@ componentDidUpdate(){
   axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${this.state.tagName}&per_page=24&format=json&nojsoncallback=1`)
     .then(response => {
       
-      this.setState({
+      this.setState( {
         images: response.data.photos.photo
       });
     })
