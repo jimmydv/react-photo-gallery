@@ -23,12 +23,8 @@ class App extends React.Component{
 
 handleTagValue=(imagetag) =>{
   const tagName = imagetag
-  this.setState( prevstate =>
-    {
-      if(prevstate!==imagetag){
-        return {tagName:tagName}
-      }
-  });
+ 
+  this.componentupdate(tagName);
   }
 
 
@@ -46,18 +42,22 @@ handleTagValue=(imagetag) =>{
 }
 
 // return data if there was change , like when searching for new images
-componentDidUpdate(){
-  
-  axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${this.state.tagName}&per_page=24&format=json&nojsoncallback=1`)
-    .then(response => {
-      
-      this.setState( {
-        images: response.data.photos.photo
+componentupdate(tagName){
+  // this.setState( prevstate => {
+    // if(prevstate !== this.state.tagName){
+      axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${tagName}&per_page=24&format=json&nojsoncallback=1`)
+      .then(response => {
+        
+        this.setState( {
+          images: response.data.photos.photo
+        });
+      })
+      .catch(function (error) {
+        console.log('Error Fetching and Parsing api data', error);
       });
-    })
-    .catch(function (error) {
-      console.log('Error Fetching and Parsing api data', error);
-    });
+  //   }
+  // })
+ 
 }
 
 
